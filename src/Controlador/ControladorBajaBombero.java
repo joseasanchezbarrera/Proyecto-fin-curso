@@ -14,6 +14,7 @@ import modelo.negocio.GestorBajaBombero;
 
 /**
  * Servlet implementation class ControladorBajaBombero
+ * se comunica con el form del html del bajabombero
  */
 @WebServlet("/ControladorBajaBombero")
 public class ControladorBajaBombero extends HttpServlet {
@@ -61,17 +62,13 @@ public class ControladorBajaBombero extends HttpServlet {
 					request.setAttribute("mensajeError", "El Idbombero no puede estar vacio");
 					request.getRequestDispatcher("bajaBombero.jsp").forward(request, response);
 					break;	
-				case -3:
-					//El Idbombero no existe
-					request.setAttribute("mensajeError", "El Idbombero NO existe");
-					request.getRequestDispatcher("bajaBombero.jsp").forward(request, response);
-					break;	
 				default:
 					// en caso de que se haya dado de alta
 					request.setAttribute("mensaje", "Bombero dado de baja con ID: " + respuesta);
 					request.getRequestDispatcher("bajaBombero.jsp").forward(request, response);
 					break;
-				}	
+					
 		}
 
+	}
 }

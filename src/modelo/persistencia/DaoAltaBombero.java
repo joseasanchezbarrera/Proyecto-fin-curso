@@ -42,32 +42,25 @@ private EntityManager em;
 	 * @return 0 en caso de que no haya conexion, el id en caso de que
 	 * se haya dado de alta
 	 */
-	public int insertar(Bombero b) {
+	public int alta(Bombero b) {
 		if(!abrirConexion()) {
 			return 0;
 		}
 		EntityTransaction et = em.getTransaction();
-		et.begin();
-		/*if(existe(b.getIdbombero()) == null) {
-			System.out.println(b);
-		}else {
-			return -6;
-		}*/
-			em.persist(b);
-			et.commit();
-			//System.out.println(em.find(Bombero.class, b.getIdbombero()));
-			cerrarConexion();
-		
-		
-		//una vez persistido se me actualiza el objeto con su id, y podemos devolverlo
-		System.out.println("a ver si sale " + b.getIdbombero());
-		return b.getIdbombero();
-	}
+				et.begin();
+				em.persist(b);    
+				et.commit();
+				cerrarConexion();
+			
+		    		
+			//una vez persistido se me actualiza el objeto con su id, y podemos devolverlo
+			return b.getIdbombero();
+		}
 	
-	@SuppressWarnings("unchecked")
-	public List<Bombero> listar() {
-		if(!abrirConexion()) {
-			return null;
+		@SuppressWarnings("unchecked")
+		public List<Bombero> listar() {
+			if(!abrirConexion()) {
+				return null;
 		}
 		
 		//para hacer la consulta debemos de usar JPQL
@@ -76,12 +69,6 @@ private EntityManager em;
 		return listaBomberos;
 	}
 	
-	public Bombero existe(int idbombero) {
-		if(abrirConexion()) {
-			return em.find(Bombero.class, idbombero);
-		}
-		return null;
-	}
 }
 
 

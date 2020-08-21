@@ -59,8 +59,8 @@ public class ControladorBuscarBombero extends HttpServlet {
 			   				
 		//response.getWriter().append("<h1>Datos del bombero buscado</h1>").append(b.toString());
 		
-		request.setAttribute("mensaje", "Bombero buscado con ID: "+ b.getIdbombero()+
-		 ",    Categoria: "+b.getCategoria()+",    Turno: "+b.getTurno()+",    Nombre: "+b.getNombre());
+		request.setAttribute("mensaje","<--- Bombero buscado --->"+"<br/>ID: " + b.getIdbombero()+
+		"<br/>Categoria: " + b.getCategoria()+"<br/> Turno: " + b.getTurno()+"<br/>Nombre: " + b.getNombre()); 
 		
 		request.getRequestDispatcher("buscarBombero.jsp").forward(request, response);
 	}

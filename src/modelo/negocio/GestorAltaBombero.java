@@ -7,6 +7,7 @@ import modelo.persistencia.DaoAltaBombero;
 
 public class GestorAltaBombero {
 	
+		
 		/**
 		 * Metodo que da de alta un Bombero
 		 * @param <Bombero1>
@@ -15,7 +16,7 @@ public class GestorAltaBombero {
 		 */		
 		
 		public int alta(Bombero b) {
-			//esto serian reglas de negocioint boolToInt( boolean b );int boolToInt( boolean b );
+			//esto serian reglas de negocio
 						
 			if (b.getNombre().length() < 10) {
 				return -1;
@@ -39,11 +40,9 @@ public class GestorAltaBombero {
 		
 			//si llegamos a este punto, debemos de comunicarnos con la capa DAO
 			DaoAltaBombero daoBombero = new DaoAltaBombero();
-			int id = daoBombero.insertar(b);
+			int id = daoBombero.alta(b);
 			return id;
 		}
-		
-		
 		//aqui podriamos poner reglas de negocio
 			DaoAltaBombero daoBombero = new DaoAltaBombero();
 			public List<Bombero> listar(){

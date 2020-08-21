@@ -90,11 +90,6 @@ public class ControladorAltaBombero extends HttpServlet {
 			request.setAttribute("mensajeError", "El Turno No puede estar vacio");
 			request.getRequestDispatcher("altaBombero.jsp").forward(request, response);
 			break;
-		case -6:
-			//El Idbombero ya está dado de alta
-			request.setAttribute("mensajeError", "El Idbombero YA está dado de alta");
-			request.getRequestDispatcher("altaBombero.jsp").forward(request, response);
-			break;
 		default:
 			// en caso de que se haya dado de alta
 			request.setAttribute("mensaje", "Bombero dado de alta con ID: " + respuesta);

@@ -26,7 +26,7 @@ $(document).ready(function() {
 <h1>Base de Datos Listado Bomberos Parque 41</h1>
 <br/>
 <a href="indexBuscarbombero.html">Volver al formulario de Buscar</a>
-<br/><br/><br/>
+<br/><br/>
 
 <h1 style="color:red">${mensajeError}</h1>
 <h1 style="color:blue">${mensaje}</h1>

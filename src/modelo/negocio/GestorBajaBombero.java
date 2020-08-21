@@ -16,10 +16,6 @@ public class GestorBajaBombero {
 		
 		if(b.getIdbombero() ==0) {
 			return -2;
-		}
-		
-		if(b.getIdbombero() == b.getIdbombero()) {
-			return -3;
 		} 
 					
 		//si llegamos a este punto, debemos de comunicarnos con la capa DAO

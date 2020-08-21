@@ -10,7 +10,6 @@ import javax.persistence.Query;
 
 import modelo.entidad.Bombero;
 
-
 public class DaoBajaBombero {
 	
 private EntityManager em;
@@ -43,14 +42,9 @@ private EntityManager em;
 		
 		EntityTransaction et = em.getTransaction();
 		et.begin();	
-		/*if(existe(b.getIdbombero()) != null) {
-		} else {
-			return -3;
-		}*/
-		Bombero bom= em.find(Bombero.class, b.getIdbombero());	
-		 //Así combierto la Entidad en Managed(gestionada o manejada)	
+		 //Así combierto la Entidad en Managed(gestionada o manejada)		
 		b= em.merge(b);		
-		em.remove(bom);			
+		em.remove(b);			
 		et.commit();	
 		cerrarConexion();			
 		//una vez persistido se me actualiza el objeto con su id, y podemos devolverlo
@@ -69,13 +63,6 @@ private EntityManager em;
 		Query query = em.createQuery("select b from Bombero b");
 		List<Bombero> listaBomberos = query.getResultList();
 		return listaBomberos;
-	}
-	
-	public Bombero existe(int idbombero) {
-		if(abrirConexion()) {
-			return em.find(Bombero.class, idbombero);
-		}
-		return null;
 	}
 	
 }
