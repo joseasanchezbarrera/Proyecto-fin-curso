@@ -49,10 +49,11 @@ public class ControladorBuscarBombero extends HttpServlet {
 		
 		Bombero b = em.find(Bombero.class, iId);
 		if(b == null) {
-			request.setAttribute("mensajeError", "El Idbombero No existe");
+			request.setAttribute("mensajeError", "El Idbombero numero: " + iId + " No existe");
 		}else {
-			request.setAttribute("mensaje","<--- Bombero encontrado --->"+"<br/>ID: " + b.getIdbombero()+
-					"<br/>Categoria: " + b.getCategoria()+"<br/> Turno: " + b.getTurno()+"<br/>Nombre: " + b.getNombre()); 
+			request.setAttribute("mensaje1","<--- Bombero encontrado --->");
+			request.setAttribute("mensaje2", "ID: " + b.getIdbombero()+
+			"<br/>Categoria: " + b.getCategoria()+"<br/> Turno: " + b.getTurno()+"<br/>Nombre: " + b.getNombre()); 
 		}
 		System.out.println(b);
 		

@@ -29,7 +29,8 @@ $(document).ready(function() {
 <br/><br/>
 
 <h1 style="color:red">${mensajeError}</h1>
-<h1 style="color:blue">${mensaje}</h1>
+<h1 style="color:green">${mensaje1}</h1>
+<h1 style="color:blue">${mensaje2}</h1>
 
 <!--  <table border="1">
 <tr> 

@@ -64,7 +64,7 @@ public class ControladorBajaBombero extends HttpServlet {
 					break;
 				case -3:
 					//El Idbombero No existe
-					request.setAttribute("mensajeError", "El Idbombero No existe");
+					request.setAttribute("mensajeError", "El Idbombero numero: " + iIdbombero + " No existe");
 					request.getRequestDispatcher("bajaBombero.jsp").forward(request, response);
 					break;
 				default:
