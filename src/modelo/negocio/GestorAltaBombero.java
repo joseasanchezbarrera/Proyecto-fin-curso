@@ -40,8 +40,10 @@ public class GestorAltaBombero {
 		
 			//si llegamos a este punto, debemos de comunicarnos con la capa DAO
 			DaoAltaBombero daoBombero = new DaoAltaBombero();
+			if(daoBombero.existe(b.getIdbombero()) == -6)
+				return -6;
 			int id = daoBombero.alta(b);
-			return id;
+				return id;
 		}
 		
 		//aqui podriamos poner reglas de negocio

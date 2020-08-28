@@ -57,6 +57,25 @@ private EntityManager em;
 			return b.getIdbombero();
 		}
 	
+	
+	/**
+	 * Este metodo lo hago para si un bombero no existe find devuelve null y si no es que existe y 
+	 * devuelve return -6 que lo tengo en el controlador de alta bombero en el switch
+	 * @param idbombero
+	 * @return
+	 */
+	public int existe(int idbombero) {
+		if(!abrirConexion()) {
+			return 0;
+		}
+		Bombero b = em.find(Bombero.class, idbombero);
+		if(b == null) {
+			return 1;
+		}else {
+			return -6;
+		}
+	}
+	
 		@SuppressWarnings("unchecked")
 		public List<Bombero> listar() {
 			if(!abrirConexion()) {
