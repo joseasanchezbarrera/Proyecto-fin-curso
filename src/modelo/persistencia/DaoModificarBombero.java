@@ -51,20 +51,14 @@ private EntityManager em;
 		//merge sincroninza la bd con el objeto
 				//tambien puede servir para dar de alta
 				EntityTransaction et = em.getTransaction();								
-				et.begin();	
-				Bombero bom= em.find(Bombero.class, b);	
-				
-				if(existe(b.getIdbombero()) == null) {
-					System.out.println(b);
-				}else {
-					return -6;
-				}
+					et.begin();	
+					Bombero bom= em.find(Bombero.class, b);	
+				    b= em.merge(b);
 					em.persist(bom);
 					et.commit();
-					//System.out.println(em.find(Bombero.class, b.getIdbombero()));
+					System.out.println(em.find(Bombero.class, b.getIdbombero()));
 					cerrarConexion();
-				
-				
+							
 				//una vez persistido se me actualiza el objeto con su id, y podemos devolverlo
 				System.out.println("a ver si sale " + b.getIdbombero());
 				return b.getIdbombero();

@@ -17,7 +17,7 @@ public class Bombero {
 	private String categoria;
 	private int turno;
 	private String nombre;
-	
+
 	public int getIdbombero() {
 		return idbombero;
 	}
@@ -47,7 +47,8 @@ public class Bombero {
 	
 	@Override
 	public String toString() {
-		return "Bombero [idbombero=" + idbombero + ", categoria=" + categoria + ",  turno=" + turno + ", nombre=" + nombre +"]";
+		return "Bombero [idbombero=" + idbombero + ", categoria=" + categoria + ",  turno=" + turno + ", nombre=" + nombre +" ]";
 	}
-		
+				
 }
+

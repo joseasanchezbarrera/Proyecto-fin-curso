@@ -8,10 +8,11 @@ package modelo.negocio;
 public class GestorBuscarBombero {
 	
 	public void buscar(int idbombero){
-		
+			
+			 
 		
 		/*DaoBuscarBombero daoBuscarBombero = new DaoBuscarBombero();
-		Bombero bom = daoBuscarBombero.buscar(idbombero);
+		int bom = daoBuscarBombero.buscar(idbombero);
 		return bom;*/
 		}
 

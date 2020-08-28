@@ -43,6 +43,7 @@ public class GestorAltaBombero {
 			int id = daoBombero.alta(b);
 			return id;
 		}
+		
 		//aqui podriamos poner reglas de negocio
 			DaoAltaBombero daoBombero = new DaoAltaBombero();
 			public List<Bombero> listar(){

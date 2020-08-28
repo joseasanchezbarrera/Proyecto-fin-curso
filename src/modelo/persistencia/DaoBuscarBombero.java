@@ -2,9 +2,9 @@ package modelo.persistencia;
 
 /*import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;*/
+import javax.persistence.Persistence;
 
-//import modelo.entidad.Bombero;
+import modelo.entidad.Bombero;*/
 
 // En la clase Buscar solo necesito el Controlador, html, jsp. Creo esta clase por si acaso
 
@@ -33,14 +33,9 @@ public class DaoBuscarBombero {
 			return false;
 		}
 	}
-	
-	public Bombero buscar(int idbombero) {
-		if(!abrirConexion()) {
-			return null;
-			
-		}
-		return em.find(Bombero.class, idbombero);				
 		
-	}*/
+		return em.find(Bombero.class, idbombero);*/				
+		
+	}
 	
-}
+

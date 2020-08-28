@@ -13,7 +13,7 @@ function ListadoBomberos() {
 
 function Modificar() {	
 	document.formulario4.submit();
-	//alert("Funcionalidad no disponible, pulsa Alta, Baja, ListadoBomberos o buscar");
+	
 	}
 
 function Buscar() {

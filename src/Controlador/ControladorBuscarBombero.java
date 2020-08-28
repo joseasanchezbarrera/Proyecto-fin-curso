@@ -48,10 +48,14 @@ public class ControladorBuscarBombero extends HttpServlet {
 		EntityManager em = factoria.createEntityManager();
 		
 		Bombero b = em.find(Bombero.class, iId);
+		if(b == null) {
+			request.setAttribute("mensajeError", "El Idbombero No existe");
+		}else {
+			request.setAttribute("mensaje","<--- Bombero encontrado --->"+"<br/>ID: " + b.getIdbombero()+
+					"<br/>Categoria: " + b.getCategoria()+"<br/> Turno: " + b.getTurno()+"<br/>Nombre: " + b.getNombre()); 
+		}
 		System.out.println(b);
 		
-		
-			
 		//habria que comunicarse con la capa gestora dentro del modelo, pero en est caso no lo haga
 		//lo dejo preparado po si algun dia lo necesito
 				//GestorBuscarBombero gb = new GestorBuscarBombero();	
@@ -59,8 +63,8 @@ public class ControladorBuscarBombero extends HttpServlet {
 			   				
 		//response.getWriter().append("<h1>Datos del bombero buscado</h1>").append(b.toString());
 		
-		request.setAttribute("mensaje","<--- Bombero buscado --->"+"<br/>ID: " + b.getIdbombero()+
-		"<br/>Categoria: " + b.getCategoria()+"<br/> Turno: " + b.getTurno()+"<br/>Nombre: " + b.getNombre()); 
+		//request.setAttribute("mensaje","<--- Bombero buscado --->"+"<br/>ID: " + b.getIdbombero()+
+		//"<br/>Categoria: " + b.getCategoria()+"<br/> Turno: " + b.getTurno()+"<br/>Nombre: " + b.getNombre()); 
 		
 		request.getRequestDispatcher("buscarBombero.jsp").forward(request, response);
 	}

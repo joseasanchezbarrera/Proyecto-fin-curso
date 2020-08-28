@@ -61,7 +61,12 @@ public class ControladorBajaBombero extends HttpServlet {
 					//El Idbombero no puede estar vacio
 					request.setAttribute("mensajeError", "El Idbombero no puede estar vacio");
 					request.getRequestDispatcher("bajaBombero.jsp").forward(request, response);
-					break;	
+					break;
+				case -3:
+					//El Idbombero No existe
+					request.setAttribute("mensajeError", "El Idbombero No existe");
+					request.getRequestDispatcher("bajaBombero.jsp").forward(request, response);
+					break;
 				default:
 					// en caso de que se haya dado de alta
 					request.setAttribute("mensaje", "Bombero dado de baja con ID: " + respuesta);
@@ -71,4 +76,5 @@ public class ControladorBajaBombero extends HttpServlet {
 		}
 
 	}
+
 }

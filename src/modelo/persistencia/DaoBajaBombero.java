@@ -42,15 +42,27 @@ private EntityManager em;
 		
 		EntityTransaction et = em.getTransaction();
 		et.begin();	
+		
 		 //Así combierto la Entidad en Managed(gestionada o manejada)		
-		b= em.merge(b);		
+		b= em.merge(b);	
 		em.remove(b);			
 		et.commit();	
 		cerrarConexion();			
 		//una vez persistido se me actualiza el objeto con su id, y podemos devolverlo
 		return b.getIdbombero();
-		
 				
+	}
+	
+	public int existe(int idbombero) {
+		if(!abrirConexion()) {
+			return 0;
+		}
+		Bombero b = em.find(Bombero.class, idbombero);
+		if(b == null) {
+			return -3;
+		}else {
+			return 1;
+		}
 	}
 
 	@SuppressWarnings("unchecked")
