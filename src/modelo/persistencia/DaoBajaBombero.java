@@ -41,9 +41,8 @@ private EntityManager em;
 	}
 		
 		EntityTransaction et = em.getTransaction();
-		et.begin();	
-		
-		 //Así combierto la Entidad en Managed(gestionada o manejada)		
+		et.begin();			
+    //Así combierto la Entidad en Managed(gestionada o manejada)//		
 		b= em.merge(b);	
 		em.remove(b);			
 		et.commit();	

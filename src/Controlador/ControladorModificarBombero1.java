@@ -11,34 +11,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.entidad.Bombero;
-//import modelo.negocio.GestorBuscarBombero;
 
 /**
- * Servlet implementation class ControladorBuscarBombero
+ * Servlet implementation class ControladorModificarBombero1
  */
-@WebServlet("/ControladorBuscarBombero")
-public class ControladorBuscarBombero extends HttpServlet {
+@WebServlet("/ControladorModificarBombero1")
+public class ControladorModificarBombero1 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ControladorBuscarBombero() {
+    public ControladorModificarBombero1() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	/**
-	 * @param Bombero 
-	 * @param bom 
-	 * @param  
-	 * @param  
-	 * @return 
-	 * @return 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		String id = request.getParameter("idbombero");
 		
 		int iId = Integer.parseInt(id);
@@ -51,8 +44,8 @@ public class ControladorBuscarBombero extends HttpServlet {
 			request.setAttribute("mensajeError", "El Idbombero numero: " + iId + " No existe");
 		}else {
 			request.setAttribute("mensaje1","<--- Bombero encontrado --->");
-			request.setAttribute("mensaje2", "ID: " + b.getIdbombero()+
-			"<br/>Categoria: " + b.getCategoria()+"<br/> Turno: " + b.getTurno()+"<br/>Nombre: " + b.getNombre()); 
+			request.setAttribute("mensaje2", "ID: " + b.getIdbombero()+" "+
+			"<br/>Categoria: " + b.getCategoria()+" "+"<br/>Turno: " + b.getTurno()+" "+"<br/>Nombre: " + b.getNombre()); 
 		}
 		System.out.println(b);
 		
@@ -61,7 +54,7 @@ public class ControladorBuscarBombero extends HttpServlet {
 				//GestorBuscarBombero gb = new GestorBuscarBombero();	
 			    //gb.buscar(iId);
 		
-		request.getRequestDispatcher("buscarBombero.jsp").forward(request, response);
+		request.getRequestDispatcher("modificarBombero1.jsp").forward(request, response);
 		
 	}
 

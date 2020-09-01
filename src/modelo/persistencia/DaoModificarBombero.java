@@ -37,9 +37,7 @@ private EntityManager em;
 	}
 	
 	/**
-	 * metodo que inserta en la bbdd un bombero
-	 * @param string el bombero a insertar
-	 * @param  
+	 * metodo que inserta en la bbdd un bombero  
 	 * @return 0 en caso de que no haya conexion, el id en caso de que
 	 * se haya dado de alta
 	 */
@@ -51,18 +49,29 @@ private EntityManager em;
 		//merge sincroninza la bd con el objeto
 				//tambien puede servir para dar de alta
 				EntityTransaction et = em.getTransaction();								
-					et.begin();	
-					Bombero bom= em.find(Bombero.class, b);	
+					et.begin();		
 				    b= em.merge(b);
-					em.persist(bom);
+					em.persist(b);
 					et.commit();
 					System.out.println(em.find(Bombero.class, b.getIdbombero()));
 					cerrarConexion();
 							
 				//una vez persistido se me actualiza el objeto con su id, y podemos devolverlo
-				System.out.println("a ver si sale " + b.getIdbombero());
+				System.out.println("a ver si sale " + b.getIdbombero() + b.getNombre());
 				return b.getIdbombero();
 			}
+	
+	public int noExiste(int idbombero) {
+		if(!abrirConexion()) {
+			return 0;
+		}
+		Bombero b = em.find(Bombero.class, idbombero);
+		if(b == null) {
+		return -6;
+			}else {
+				return 1;
+				}
+	}
 			
 			@SuppressWarnings("unchecked")
 			public List<Bombero> listar() {
@@ -76,10 +85,4 @@ private EntityManager em;
 				return listaBomberos;
 			}
 			
-			public Bombero existe(int idbombero) {
-				if(abrirConexion()) {
-					return em.find(Bombero.class, idbombero);
-				}
-				return null;
-			}
 		}

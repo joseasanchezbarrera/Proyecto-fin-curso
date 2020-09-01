@@ -32,9 +32,8 @@ public class DaoBuscarBombero {
 			e.printStackTrace();
 			return false;
 		}
-	}
-		
-		return em.find(Bombero.class, idbombero);*/				
+	}*/
+					
 		
 	}
 	

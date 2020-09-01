@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 import modelo.entidad.Bombero;
 import modelo.negocio.GestorModificarBombero;
@@ -37,10 +37,12 @@ public class ControladorModificarBombero extends HttpServlet {
 	}
 
 	/**
+	 * @param  
+	 * @param em 
 	 * @param id1 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, ServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String idbombero = request.getParameter("idbombero");
 		String nombre = request.getParameter("nombre");
@@ -102,9 +104,18 @@ public class ControladorModificarBombero extends HttpServlet {
 			request.setAttribute("mensajeError", "El Turno No puede estar vacio");
 			request.getRequestDispatcher("modificarBombero.jsp").forward(request, response);
 			break;
+		case -6:
+			//El Turno no puede estar vacio
+			request.setAttribute("mensajeError", "El Idbombero numero: " + iIdbombero + " No existe");
+			request.getRequestDispatcher("modificarBombero.jsp").forward(request, response);
+			break;
 		default:
 			// en caso de que se haya dado de alta
-			request.setAttribute("mensaje", "Bombero ha sido cambiado con ID: " + respuesta);
+			//request.setAttribute("mensaje1", "Los datos del Bombero han sido cambiados con ID: " + respuesta);
+			request.setAttribute("mensaje1", "El Bombero con ID: "+b.getIdbombero());
+			//request.setAttribute("mensaje2", "Los datos del Bombero han sido cambiados con ID: " + respuesta);
+			request.setAttribute("mensaje2", "Ha sido Modificado Por: "+"<br/>ID: " + b.getIdbombero()+
+					"<br/>Categoria: " + b.getCategoria()+"<br/> Turno: " + b.getTurno()+"<br/>Nombre: " + b.getNombre());
 			request.getRequestDispatcher("modificarBombero.jsp").forward(request, response);
 			break;
 		}	

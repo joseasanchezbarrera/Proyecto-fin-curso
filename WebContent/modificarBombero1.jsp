@@ -23,14 +23,17 @@ $(document).ready(function() {
 <body>
 
 <h1>Base de Datos Listado Bomberos Parque 41</h1>
-<a href="indexModificarbombero1.html">Volver al formulario de Modificar</a>
-<br/>
+<a href="indexModificarbombero1.html">Si el Bombero no existe pincha aquí</a> 
+<br/><br/>
 
 <h1 style="color:red">${mensajeError}</h1>
+
+<a href="indexModificarbombero.html">Ir al formulario para Modificar</a>
+<br/>
 <h1 style="color:green">${mensaje1}</h1>
 <h1 style="color:blue">${mensaje2}</h1>
 
-<table border="1">
+<!--  <table border="1">
 <tr> 
 	<th>Idbombero</th>
 	<th>Categoria</th>
@@ -46,7 +49,7 @@ $(document).ready(function() {
 	<td>${bombero.nombre}</td>
 	</tr>
 	</c:forEach>
-</table>
+</table> -->
 
 <audio>
 <source src="SonidoBoton.mp3" type="audio/mp3">

@@ -46,14 +46,17 @@ public class GestorModificarBombero {
 			
 				//si llegamos a este punto, debemos de comunicarnos con la capa DAO
 				DaoModificarBombero daoModificarBombero = new DaoModificarBombero();
+				if(daoModificarBombero.noExiste(b.getIdbombero()) == -6)
+					return -6;
+
 				int id = daoModificarBombero.modificar(b);
 				return id;
 			}
 			
 			
 			//aqui podriamos poner reglas de negocio
-				DaoModificarBombero daoModificarBombero = new DaoModificarBombero();
-				public List<Bombero> listar(){
+			DaoModificarBombero daoModificarBombero = new DaoModificarBombero();
+			public List<Bombero> listar(){
 				return daoModificarBombero.listar();
 			}
 										
