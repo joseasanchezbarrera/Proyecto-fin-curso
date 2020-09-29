@@ -4,12 +4,12 @@ var confContr;
 function validar() {
 	if(contr.value!=="" && confContr.value!=="") {
 		if(contr.value!=confContr.value) {
-			alert("Contraseñas distintas");
+			alertify.alert("Contraseñas distintas", "Pulsa la caja OK");
 		}else {
 			document.frm1.submit();
 		}
 	}else {
-		alert("Contraseñas vacias");
+		alertify.alert("Contraseñas vacias", "Pulsa la caja OK");
 	}
 }
 

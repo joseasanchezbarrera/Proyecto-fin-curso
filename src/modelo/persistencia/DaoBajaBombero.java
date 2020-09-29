@@ -42,20 +42,26 @@ private EntityManager em;
 		
 		EntityTransaction et = em.getTransaction();
 		et.begin();			
-    //Así combierto la Entidad en Managed(gestionada o manejada)//		
+    //Así convierto la Entidad en Managed con merge(gestionada o manejada)//		
 		b= em.merge(b);	
 		em.remove(b);			
 		et.commit();	
 		cerrarConexion();			
-		//una vez persistido se me actualiza el objeto con su id, y podemos devolverlo
+	//una vez persistido se me actualiza el objeto con su id, y podemos devolverlo
 		return b.getIdbombero();
 				
 	}
+	
+	/*
+	 *Creo el método existe y se comunica con el Gestor
+	 * que es donde ponemos las reglas del negocio
+	 */
 	
 	public int existe(int idbombero) {
 		if(!abrirConexion()) {
 			return 0;
 		}
+	
 		Bombero b = em.find(Bombero.class, idbombero);
 		if(b == null) {
 			return -3;

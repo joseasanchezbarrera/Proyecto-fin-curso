@@ -50,16 +50,14 @@ private EntityManager em;
 				et.begin();
 				em.persist(b);    
 				et.commit();
-				cerrarConexion();
-			
-		    		
-			//una vez persistido se me actualiza el objeto con su id, y podemos devolverlo
-			return b.getIdbombero();
+				cerrarConexion();				    		
+		//una vez persistido se me actualiza el objeto con su id, y podemos devolverlo
+				return b.getIdbombero();
 		}
 	
 	
 	/**
-	 * Este metodo lo hago para si un bombero no existe find devuelve null y si no es que existe y 
+	 * Este metodo lo hago por si un bombero no existe, find devuelve null y si no es que existe y 
 	 * devuelve return -6 que lo tengo en el controlador de alta bombero en el switch
 	 * @param idbombero
 	 * @return

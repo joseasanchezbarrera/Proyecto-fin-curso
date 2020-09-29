@@ -6,13 +6,14 @@ import modelo.entidad.Bombero;
 import modelo.persistencia.DaoAltaBombero;
 
 public class GestorAltaBombero {
-	
+	//aqui podriamos poner reglas de negocio
 		
 		/**
 		 * Metodo que da de alta un Bombero
-		 * @param <Bombero1>
 		 * @param b el Bombero a dar de alta
-		 * @param Idbombero 
+		 * @return -1 el idbombero tiene que ser menor de 10 caracteres, -2 el idbombero no puede
+		 * ser mayor del numero 10000, -3 la categoria no puede estar vacia, -4 el idbombero no
+		 * puede estar vacio, -5 el turno no puede estar vacio
 		 */		
 		
 		public int alta(Bombero b) {
@@ -46,7 +47,7 @@ public class GestorAltaBombero {
 				return id;
 		}
 		
-		//aqui podriamos poner reglas de negocio
+		//aqui ponemos la lista de negocio
 			DaoAltaBombero daoBombero = new DaoAltaBombero();
 			public List<Bombero> listar(){
 			return daoBombero.listar();

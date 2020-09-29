@@ -14,7 +14,8 @@ import modelo.entidad.Bombero;
 import modelo.negocio.GestorModificarBombero;
 
 /**
- * Servlet implementation class ControladorModificarBombero
+ * Servlet implementation class ControladorModificarBombero.
+ * Se comunica con el HTML form name="funcion" action="ControladorModificarBombero" pero en JSP no en HTML
  */
 @WebServlet("/ControladorModificarBombero")
 public class ControladorModificarBombero extends HttpServlet {
@@ -55,12 +56,13 @@ public class ControladorModificarBombero extends HttpServlet {
 		Bombero b = new Bombero();
 		b.setIdbombero(iIdbombero);
 		b.setNombre(nombre);
-		// en la categoria pongo en mayusculas para sque salga por defecto
-		//aunque lo ponga en minusculas
+		
+		System.out.println(nombre);
 		b.setCategoria(categoria);
 		b.setTurno(iTurno);
 		
-		
+		System.out.println(categoria);
+		System.out.println(turno);
 		
 		//habria que comunicarse con la capa gestora dentro del modelo
 		GestorModificarBombero gb = new GestorModificarBombero();
@@ -74,7 +76,7 @@ public class ControladorModificarBombero extends HttpServlet {
 		
 		switch (respuesta) {
 		case -1:
-			//Como queremos avisar a la pagina que no se ha podido dar de alta
+			//Como queremos avisar a la pagina que no se ha podido modificar
 			//le podemos mandar mensajes, podemos mandar lo que sea
 			//es una estructura de tipo hash que podremos recuperar en la parte de 
 			//la vista(jsps)
@@ -82,41 +84,34 @@ public class ControladorModificarBombero extends HttpServlet {
 			
 			//mediante requestDisptcher le decimos a donde queremos ir, es decir,
 			//continuamos con la peticion http en otro recurso
-			request.getRequestDispatcher("modificarBombero.jsp").forward(request, response);
+			request.getRequestDispatcher("jsp/modificarBombero.jsp").forward(request, response);
 			break;
 		case -2:
 			//El idbombero no puede ser mayor de 10000
 			request.setAttribute("mensajeError", "El idbombero tiene que ser menor de 10000");
-			request.getRequestDispatcher("modificarBombero.jsp").forward(request, response);
+			request.getRequestDispatcher("jsp/modificarBombero.jsp").forward(request, response);
 			break;	
 		case -3:
 			//La Categoria no puede estar vacia
 			request.setAttribute("mensajeError", "La Categoria NO puede estar vacia");
-			request.getRequestDispatcher("modificarBombero.jsp").forward(request, response);
+			request.getRequestDispatcher("jsp/modificarBombero.jsp").forward(request, response);
 			break;
 		case -4:
 			//El Idbombero no puede estar vacio
 			request.setAttribute("mensajeError", "El Idbombero NO puede estar vacio");
-			request.getRequestDispatcher("modificarBombero.jsp").forward(request, response);
+			request.getRequestDispatcher("jsp/modificarBombero.jsp").forward(request, response);
 			break;
 		case -5:
 			//El Turno no puede estar vacio
 			request.setAttribute("mensajeError", "El Turno No puede estar vacio");
-			request.getRequestDispatcher("modificarBombero.jsp").forward(request, response);
-			break;
-		case -6:
-			//El Turno no puede estar vacio
-			request.setAttribute("mensajeError", "El Idbombero numero: " + iIdbombero + " No existe");
-			request.getRequestDispatcher("modificarBombero.jsp").forward(request, response);
+			request.getRequestDispatcher("jsp/modificarBombero.jsp").forward(request, response);
 			break;
 		default:
-			// en caso de que se haya dado de alta
-			//request.setAttribute("mensaje1", "Los datos del Bombero han sido cambiados con ID: " + respuesta);
+			// en caso de que se haya modificado
 			request.setAttribute("mensaje1", "El Bombero con ID: "+b.getIdbombero());
-			//request.setAttribute("mensaje2", "Los datos del Bombero han sido cambiados con ID: " + respuesta);
 			request.setAttribute("mensaje2", "Ha sido Modificado Por: "+"<br/>ID: " + b.getIdbombero()+
-					"<br/>Categoria: " + b.getCategoria()+"<br/> Turno: " + b.getTurno()+"<br/>Nombre: " + b.getNombre());
-			request.getRequestDispatcher("modificarBombero.jsp").forward(request, response);
+            "<br/>Categoria: " + b.getCategoria()+"<br/> Turno: " + b.getTurno()+"<br/>Nombre: " + b.getNombre());
+			request.getRequestDispatcher("jsp/modificarBombero.jsp").forward(request, response);
 			break;
 		}	
 	}

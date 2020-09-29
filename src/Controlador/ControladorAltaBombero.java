@@ -13,14 +13,14 @@ import modelo.entidad.Bombero;
 import modelo.negocio.GestorAltaBombero;
 
 /**
- * Servlet implementation class ControladorAltaPersona
+ * Servlet implementation class ControladorAltaPersona.
+ * se comunica con el HTML form action="altaBombero"
  */
 @WebServlet("/altaBombero")
 public class ControladorAltaBombero extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
@@ -39,13 +39,7 @@ public class ControladorAltaBombero extends HttpServlet {
 		Bombero b = new Bombero();
 		b.setIdbombero(iIdbombero);
 		b.setNombre(nombre);
-		
-		// en la categoria pongo en mayusculas para que salga por defecto
-		//aunque lo ponga en minusculas
-		
-		//b.setCategoria(categoria.toUpperCase());
-		
-		
+				
 		b.setCategoria(categoria);	
 		b.setTurno(iTurno);
 		
@@ -66,39 +60,39 @@ public class ControladorAltaBombero extends HttpServlet {
 			//la vista(jsps)
 			request.setAttribute("mensajeError", "El Nombre  tiene que tener más de 10 caracteres");
 			
-			//mediante requestDisptcher le decimos a donde queremos ir, es decir,
+			//mediante requestDispatcher le decimos a donde queremos ir, es decir,
 			//continuamos con la peticion http en otro recurso
-			request.getRequestDispatcher("altaBombero.jsp").forward(request, response);
+			request.getRequestDispatcher("jsp/altaBombero.jsp").forward(request, response);
 			break;
 		case -2:
 			//El idbombero no puede ser mayor de 10000
 			request.setAttribute("mensajeError", "El idbombero tiene que ser menor de 10000");
-			request.getRequestDispatcher("altaBombero.jsp").forward(request, response);
+			request.getRequestDispatcher("jsp/altaBombero.jsp").forward(request, response);
 			break;	
 		case -3:
 			//La Categoria no puede estar vacia
 			request.setAttribute("mensajeError", "La Categoria NO puede estar vacia");
-			request.getRequestDispatcher("altaBombero.jsp").forward(request, response);
+			request.getRequestDispatcher("jsp/altaBombero.jsp").forward(request, response);
 			break;
 		case -4:
 			//El Idbombero no puede estar vacio
 			request.setAttribute("mensajeError", "El Idbombero NO puede estar vacio");
-			request.getRequestDispatcher("altaBombero.jsp").forward(request, response);
+			request.getRequestDispatcher("jsp/altaBombero.jsp").forward(request, response);
 			break;
 		case -5:
 			//El Turno no puede estar vacio
 			request.setAttribute("mensajeError", "El Turno No puede estar vacio");
-			request.getRequestDispatcher("altaBombero.jsp").forward(request, response);
+			request.getRequestDispatcher("jsp/altaBombero.jsp").forward(request, response);
 			break;
 		case -6:
-			//El Turno no puede estar vacio
+			//El Idbombero Ya existe
 			request.setAttribute("mensajeError", "El Idbombero numero: " + iIdbombero + " Ya existe");
-			request.getRequestDispatcher("altaBombero.jsp").forward(request, response);
+			request.getRequestDispatcher("jsp/altaBombero.jsp").forward(request, response);
 			break;
 		default:
 			// en caso de que se haya dado de alta
 			request.setAttribute("mensaje", "Bombero dado de alta con ID: " + respuesta);
-			request.getRequestDispatcher("altaBombero.jsp").forward(request, response);
+			request.getRequestDispatcher("jsp/altaBombero.jsp").forward(request, response);
 			break;
 		}	
 	}

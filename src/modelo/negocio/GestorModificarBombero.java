@@ -7,18 +7,10 @@ import modelo.persistencia.DaoModificarBombero;
 
 public class GestorModificarBombero {
 	
-	//vamos a meter alguna regla de negocio, supongamos que me dice
-			//que el nombre de la persona tiene que tener al menos 3 carateres
-			//y la edad debe de ser al menos de 18
-			/**
-			 * Metodo que da de alta una persona
-			 * @param id1 
-			 * @param p la persona a dar de alta
-			 * @return -1 en caso de que el nombre sea menor de 3 caracteres, -2 en caso
-			 * de que la edad sea menor que 18, 0 en caso de error con la bbdd
-			 * y un numero positivo que representa el id en caso de que se haya dado de 
-			 * alta
-			 */
+	/*vamos a meter alguna regla de negocio, supongamos que me dice
+	  que el nombre de la persona tiene que tener al menos 10 carateres
+	  o que la categoria no puede estar vacia*/
+	
 			//@SuppressWarnings("null")
 			public  int modificar(Bombero b) {
 				//esto serian reglas de negocio		
@@ -53,8 +45,6 @@ public class GestorModificarBombero {
 				return id;
 			}
 			
-			
-			//aqui podriamos poner reglas de negocio
 			DaoModificarBombero daoModificarBombero = new DaoModificarBombero();
 			public List<Bombero> listar(){
 				return daoModificarBombero.listar();

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="EstiloJSP.css">
+<link rel="stylesheet" type="text/css" href="css/EstiloJSP.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>  
 <script type="text/javascript">
 $(document).ready(function() {

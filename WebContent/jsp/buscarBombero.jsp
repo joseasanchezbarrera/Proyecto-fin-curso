@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="EstiloJSP.css">
+<link rel="stylesheet" type="text/css" href="css/EstiloJSP.css">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>  
 <script type="text/javascript">
 $(document).ready(function() {
@@ -23,13 +24,17 @@ $(document).ready(function() {
 <body>
 
 <h1>Base de Datos Listado Bomberos Parque 41</h1>
-<a href="indexAltabombero.html">Volver al formulario de Alta </a>
+<br/>
+<a href="indexBuscarbombero.html">Volver al formulario de Buscar</a>
 <br/><br/>
 
 <h1 style="color:red">${mensajeError}</h1>
-<h1 style="color:blue">${mensaje}</h1>
+<h1 style="color:green">${mensaje1}</h1>
+<h1 style="color:blue">${mensaje2}</h1>
 
-<table border="1">
+<!-- No necesito en esta clase de buscar Bombero que salga la tabla -->
+
+<!--  <table border="1">
 <tr> 
 	<th>Idbombero</th>
 	<th>Categoria</th>
@@ -45,12 +50,14 @@ $(document).ready(function() {
 	<td>${bombero.nombre}</td>
 	</tr>
 	</c:forEach>
-</table>
+	
+</table> -->
 
 <audio>
 <source src="SonidoBoton.mp3" type="audio/mp3">
 <source src="SonidoBoton.ogg" type="audio/ogg"> <!-- Audio solo para FireFox y Mozilla -->
 </audio>
+
 
 </body>
 </html>

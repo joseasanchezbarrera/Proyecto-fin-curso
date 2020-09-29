@@ -37,17 +37,17 @@ private EntityManager em;
 	}
 	
 	/**
-	 * metodo que inserta en la bbdd un bombero  
+	 * metodo que modifica en la bbdd un bombero  
 	 * @return 0 en caso de que no haya conexion, el id en caso de que
-	 * se haya dado de alta
+	 * se haya modificado
 	 */
 	public int  modificar(Bombero b) {
 		if(!abrirConexion()) {
 			return 0;
 		}
 		
-		//merge sincroninza la bd con el objeto
-				//tambien puede servir para dar de alta
+		/*merge sincroninza la bd con el objeto
+		  tambien puede servir para dar de alta*/
 				EntityTransaction et = em.getTransaction();								
 					et.begin();		
 				    b= em.merge(b);
@@ -60,6 +60,8 @@ private EntityManager em;
 				System.out.println("a ver si sale " + b.getIdbombero() + b.getNombre());
 				return b.getIdbombero();
 			}
+	
+	// Creo el metodo existe con el find para encontrar al bombero
 	
 	public int noExiste(int idbombero) {
 		if(!abrirConexion()) {

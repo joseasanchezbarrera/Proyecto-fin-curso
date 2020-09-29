@@ -2,8 +2,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="estiloBajabombero.css">
-<script type="text/javascript" src="inicioCrud.js"></script>
+<link rel="stylesheet" type="text/css" href="css/estiloBajabombero.css">
+<script type="text/javascript" src="js/inicioCrud.js"></script>
+<script type="text/javascript" src="js/bajaBombero.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -14,17 +15,25 @@ $(document).ready(function() {
 });
 </script>
 
+<!--   Aquí abajo van los links y la script con las ventanas bonitas -->
+
+<link rel="stylesheet" href="Alertas/css/alertify.min.css"/>
+<link rel="stylesheet" href="Alertas/css/themes/semantic.min.css"/>
+<script src="Alertas/alertify.min.js"></script>
+<script type="text/javascript"></script>
+
+
 <title>Insert title here</title>
 </head>
 <body>
 <h1>Formulario Baja Bombero</h1>
 	<!-- El action sera el servlet(controlador) al que vamos a ir -->
-	<form action="ControladorBajaBombero" method="post">
+	<form name="formulariobaja" action="ControladorBajaBombero" method="post">
     	
     	Idbombero: <input type="number" name="idbombero" value=0>
 		<br/><br/><br/>
 				
-		<input id="baja" class="boton" type="submit" value="baja"/>
+		<input id="baja" class="boton" type="button" value="baja" onclick="baja()"/>
 		<input id="Limpiar" class="boton" type="reset" value="Limpiar"/>
 		<br/><br/>
 	</form>

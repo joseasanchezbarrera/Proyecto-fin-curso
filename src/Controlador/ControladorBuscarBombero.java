@@ -11,32 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.entidad.Bombero;
-//import modelo.negocio.GestorBuscarBombero;
 
 /**
  * Servlet implementation class ControladorBuscarBombero
+ * Se comunica con el HTML form action="ControladorBuscarBombero"
  */
 @WebServlet("/ControladorBuscarBombero")
 public class ControladorBuscarBombero extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public ControladorBuscarBombero() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @param Bombero 
-	 * @param bom 
-	 * @param  
-	 * @param  
-	 * @return 
-	 * @return 
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String id = request.getParameter("idbombero");
@@ -48,7 +36,7 @@ public class ControladorBuscarBombero extends HttpServlet {
 		
 		Bombero b = em.find(Bombero.class, iId);
 		if(b == null) {
-			request.setAttribute("mensajeError", "El Idbombero numero: " + iId + " No existe");
+			request.setAttribute("mensajeError", "El Idbombero numero: " + iId + " No existe,"+ " clicla en volver al formulario de Buscar");
 		}else {
 			request.setAttribute("mensaje1","<--- Bombero encontrado --->");
 			request.setAttribute("mensaje2", "ID: " + b.getIdbombero()+
@@ -56,12 +44,13 @@ public class ControladorBuscarBombero extends HttpServlet {
 		}
 		System.out.println(b);
 		
-		//habria que comunicarse con la capa gestora dentro del modelo, pero en este caso no lo haga
-		//lo dejo preparado po si algun dia lo necesito
-				//GestorBuscarBombero gb = new GestorBuscarBombero();	
-			    //gb.buscar(iId);
+		/*habria que comunicarse con la capa gestora dentro del modelo, pero en este caso no lo hago
+		lo dejo preparado po si algun dia lo necesito*/
 		
-		request.getRequestDispatcher("buscarBombero.jsp").forward(request, response);
+				/*GestorBuscarBombero gb = new GestorBuscarBombero();	
+			    gb.buscar(iId);*/
+		
+		request.getRequestDispatcher("jsp/buscarBombero.jsp").forward(request, response);
 		
 	}
 

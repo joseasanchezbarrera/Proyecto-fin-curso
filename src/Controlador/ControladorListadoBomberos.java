@@ -13,7 +13,8 @@ import modelo.entidad.Bombero;
 import modelo.negocio.GestorListadoBomberos;
 
 /**
- * Servlet implementation class ControladorBuscarBombero
+ * Servlet implementation class ControladorBuscarBombero.
+ * Se comunica con el HTML el form action="ControladorListadoBomberos"
  */
 @WebServlet("/ControladorListadoBomberos")
 public class ControladorListadoBomberos extends HttpServlet {
@@ -31,7 +32,7 @@ public class ControladorListadoBomberos extends HttpServlet {
 		List<Bombero> listaBombero = daoListadoBomberos.listar();
 		request.setAttribute("listaBomberos", listaBombero);
 		
-		request.getRequestDispatcher("listadoBomberos.jsp").forward(request, response);
+		request.getRequestDispatcher("jsp/listadoBomberos.jsp").forward(request, response);
 		
 		response.getWriter().append("Served at: ").append("listaBomberos");
 	}

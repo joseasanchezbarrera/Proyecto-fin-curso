@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import modelo.entidad.Bombero;
 
 /**
- * Servlet implementation class ControladorModificarBombero1
+ * Servlet implementation class ControladorModificarBombero1.
+ * Se comunica con el HTML form action="ControladorModificarBombero1"
  */
 @WebServlet("/ControladorModificarBombero1")
 public class ControladorModificarBombero1 extends HttpServlet {
@@ -41,20 +42,27 @@ public class ControladorModificarBombero1 extends HttpServlet {
 		
 		Bombero b = em.find(Bombero.class, iId);
 		if(b == null) {
-			request.setAttribute("mensajeError", "El Idbombero numero: " + iId + " No existe");
-		}else {
+			request.setAttribute("mensajeError", "El Idbombero numero: " + iId + " No existe,"
+			+ " clicla en volver al formulario de Modificar");
+			request.getRequestDispatcher("jsp/errormodificarBombero.jsp").forward(request, response);
+			
+		}
+			else {
 			request.setAttribute("mensaje1","<--- Bombero encontrado --->");
 			request.setAttribute("mensaje2", "ID: " + b.getIdbombero()+" "+
-			"<br/>Categoria: " + b.getCategoria()+" "+"<br/>Turno: " + b.getTurno()+" "+"<br/>Nombre: " + b.getNombre()); 
+			"<br/>Categoria: " + b.getCategoria()+" "+"<br/>Turno: " + b.getTurno()+" "+"<br/>Nombre: " + b.getNombre());
+			request.setAttribute("bombero", b);
 		}
 		System.out.println(b);
 		
-		//habria que comunicarse con la capa gestora dentro del modelo, pero en este caso no lo haga
+		//habria que comunicarse con la capa gestora dentro del modelo, pero en este caso no lo hago
 		//lo dejo preparado po si algun dia lo necesito
 				//GestorBuscarBombero gb = new GestorBuscarBombero();	
 			    //gb.buscar(iId);
 		
-		request.getRequestDispatcher("modificarBombero1.jsp").forward(request, response);
+		request.getRequestDispatcher("jsp/indexModificarbombero.jsp").forward(request, response);
+		
+		
 		
 	}
 

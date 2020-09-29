@@ -13,15 +13,14 @@ import modelo.entidad.Bombero;
 import modelo.negocio.GestorBajaBombero;
 
 /**
- * Servlet implementation class ControladorBajaBombero
- * se comunica con el form del html del bajabombero
+ * Servlet implementation class ControladorBajaBombero.
+ * Se comunica con HTML form name="formulariobaja" action="ControladorBajaBombero"
  */
 @WebServlet("/ControladorBajaBombero")
 public class ControladorBajaBombero extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -55,22 +54,22 @@ public class ControladorBajaBombero extends HttpServlet {
 				case -1:
 					//caso idbombero mayor de 10000
 					request.setAttribute("mensajeError", "El idbombero tiene que ser Menor de 10000");
-					request.getRequestDispatcher("bajaBombero.jsp").forward(request, response);
+					request.getRequestDispatcher("jsp/bajaBombero.jsp").forward(request, response);
 					break;
 				case -2:
 					//El Idbombero no puede estar vacio
 					request.setAttribute("mensajeError", "El Idbombero no puede estar vacio");
-					request.getRequestDispatcher("bajaBombero.jsp").forward(request, response);
+					request.getRequestDispatcher("jsp/bajaBombero.jsp").forward(request, response);
 					break;
 				case -3:
 					//El Idbombero No existe
 					request.setAttribute("mensajeError", "El Idbombero numero: " + iIdbombero + " No existe");
-					request.getRequestDispatcher("bajaBombero.jsp").forward(request, response);
+					request.getRequestDispatcher("jsp/bajaBombero.jsp").forward(request, response);
 					break;
 				default:
 					// en caso de que se haya dado de alta
 					request.setAttribute("mensaje", "Bombero dado de baja con ID: " + respuesta);
-					request.getRequestDispatcher("bajaBombero.jsp").forward(request, response);
+					request.getRequestDispatcher("jsp/bajaBombero.jsp").forward(request, response);
 					break;
 					
 		}

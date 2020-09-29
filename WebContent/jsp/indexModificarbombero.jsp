@@ -2,8 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="estiloModificarbombero.css">
-<script type="text/javascript" src="inicioCrud.js"></script>
+<link rel="stylesheet" type="text/css" href="css/estiloModificarbombero.css">
+<script type="text/javascript" src="js/inicioCrud.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -17,15 +17,16 @@ $(document).ready(function() {
 <title>Insert title here</title>
 </head>
 <body>
+<!-- Cambio de HTML a JSP para poder meter Java en este archivo -->
 <h1>Formulario Modificar Bombero</h1>
 	<!-- El action sera el servlet(controlador) al que vamos a ir -->	
-	<form action="ControladorModificarBombero" method="post">
+	<form name="funcion" action="ControladorModificarBombero" method="post">
 	
-    	Idbombero: <input type="number" name="idbombero" value=0>
+    	Idbombero: <input type="number" readonly="readonly" name="idbombero" value=${bombero.idbombero}>
 		<br/><br/>
 		
 		Categoria: <select name="categoria">
-		<option value="0" selected="selected">Selecciona Categoria</option>		
+		<option value="${bombero.categoria}" selected="selected">${bombero.categoria}</option> 		
 		<option value="BB">BB</option>
 		<option value="BC">BC</option>
 		<option value="EM">EM</option>
@@ -33,18 +34,18 @@ $(document).ready(function() {
 		</select> 	
 		<br/><br/>
 		
-		Turno: <select name="turno">
-		<option value=0 selected="selected">Selecciona Turno</option>		
+	    Turno: <select name="turno">
+	    <option value="${bombero.turno}">${bombero.turno}</option>	
 		<option value=1>1</option>
 		<option value=2>2</option>
 		<option value=3>3</option>
 		<option value=4>4</option>
 		<option value=5>5</option>
 		<option value=6>6</option>	
-		</select>		
+		</select>	
 		<br/><br/>
-		
-		Nombre: <input type="text" name="nombre"/>
+			
+		Nombre: <input type="text" name="nombre" value="${bombero.nombre}">
 		<br/><br/>	
 		
 		<input id="modificar" class="boton" type="submit" value="modificar"/>
